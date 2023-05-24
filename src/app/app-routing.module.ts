@@ -7,7 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
-import { AdminProductComponent } from './pages/admin/admin-product/admin-product.component';
+
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { ProductEditComponent } from './pages/product-edit/product-edit.component';

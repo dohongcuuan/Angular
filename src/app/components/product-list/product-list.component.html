@@ -1,10 +1,10 @@
 <div class="container">
-    <h1>{{ title }}</h1>
+    <!-- <h1>{{ title }}</h1> -->
 
     <input type="text" (input)="setValue($event)" />
-    {{ valueInput }}
+    <!-- {{ valueInput }} -->
     <hr />
-    <div *ngIf="status">Hiển thị</div>
+    <!-- <div *ngIf="status">Hiển thị</div> -->
     <button (click)="toggle()">Toggled</button>
     <hr />
 
@@ -25,7 +25,12 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
                 <td>
-                    <button class="btn btn-danger">Xóa</button>
+                    <button
+                        class="btn btn-danger"
+                        (click)="removeItem(product.id)!"
+                    >
+                        Xóa
+                    </button>
                 </td>
             </tr>
         </tbody>

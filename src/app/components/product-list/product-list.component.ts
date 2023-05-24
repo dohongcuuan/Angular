@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from 'src/app/interfaces/Product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,23 +8,30 @@ import { IProduct } from 'src/app/interfaces/Product';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
-  title = 'Quản lý sản phẩm';
-  status:boolean=false;
-  valueInput: string = "";
-  products: IProduct[] = [
-    { _id: 1, name: "Sản phẩm A", price: 1000, img: "https://picsum.photos/200/200" },
-    { _id: 2, name: "Sản phẩm B", price: 2000, img: "https://picsum.photos/200/200" },
-  ]
+  // @Input() products: IProduct[] = [];
+  // @Output() onRemove = new EventEmitter<number>();
+  // title = 'Quản lý sản phẩm';
+  // status: boolean = false;
+  // valueInput: string = "";
+  products: IProduct[] = [];
 
+  constructor(private productService: ProductService) {
+    this.productService.getProducts().subscribe(data => {
+      this.products = data
+    }, error => {
+      console.log(error.message)
+    })
+  }
   toggle() {
-    this.status = !this.status;
+    // this.status = !this.status;
   }
   setValue(e: any) {
-    this.valueInput = e.target.value;
+    // this.valueInput = e.target.value;
   }
 
-
-  removeItem(id:any){
-    this.products=this.products.filter
+  removeItem(id: any) {
+    this.productService.deleteProduct(id).subscribe(() => {
+      console.log('delete thanhf cong')
+    })
   }
 }
